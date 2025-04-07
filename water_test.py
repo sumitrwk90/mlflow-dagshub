@@ -5,12 +5,23 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 import mlflow.sklearn
-import dagshub
 
+
+# remote tracking info
+import dagshub
 dagshub.init(repo_owner='sumitrwk90', repo_name='mlflow-dagshub', mlflow=True)
 
-mlflow.set_experiment("gb_exp")
+# # Autologging
+# mlflow.set_experiment("gb_exp_3_autologging")
+
+# Mannual logging
+mlflow.set_experiment("gb_exp_07_04_2025")
+
+# remote tracking link
 mlflow.set_tracking_uri("https://dagshub.com/sumitrwk90/mlflow-dagshub.mlflow")
+
+# # solo tracking url
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 data = pd.read_csv(r"C:\Users\Lenovo\mlflow\data\water_potability.csv")
 data.isnull().sum()
@@ -35,12 +46,15 @@ import pickle
 X_train = train_processed_data.iloc[:,0:-1].values
 y_train = train_processed_data.iloc[:,-1].values
 
-n_estimators = 500
+n_estimators: int=1000
+learning_rate: float=0.001
+max_depth: int=3
 
+# mlflow.autolog()
 
 with mlflow.start_run():
 
-    clf = GradientBoostingClassifier(n_estimators=n_estimators)
+    clf = GradientBoostingClassifier(n_estimators=n_estimators, learning_rate=learning_rate, max_depth=max_depth)
     clf.fit(X_train,y_train)
 
     # save 
@@ -66,7 +80,10 @@ with mlflow.start_run():
     mlflow.log_metric("f1-score",f1_score)
 
     mlflow.log_param("n_estimators", n_estimators)
+    mlflow.log_param("learning_rate", learning_rate)
+    mlflow.log_param("max_depth", max_depth)
 
+    
     cm = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(5,5))
     sns.heatmap(cm, annot=True)
