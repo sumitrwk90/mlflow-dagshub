@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/mlflow-dagshub/mlruns/342094196420431972/c2808234b2fd485caf8cd118e51165a6/artifacts
+end_time: 1744097950967
+entry_point_name: ''
+experiment_id: '342094196420431972'
+lifecycle_stage: active
+run_id: c2808234b2fd485caf8cd118e51165a6
+run_name: enthused-dog-726
+run_uuid: c2808234b2fd485caf8cd118e51165a6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744097662097
+status: 3
+tags: []
+user_id: Lenovo
