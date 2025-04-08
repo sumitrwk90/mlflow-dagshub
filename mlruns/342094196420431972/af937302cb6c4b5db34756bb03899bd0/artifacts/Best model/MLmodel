@@ -1,0 +1,33 @@
+artifact_path: Best model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.1
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.1
+is_signature_from_type_hint: false
+mlflow_version: 2.21.3
+model_size_bytes: 36756330
+model_uuid: eb4f6b3ea4d4496d82d848df3fc414e5
+prompts: null
+run_id: af937302cb6c4b5db34756bb03899bd0
+signature:
+  inputs: '[{"type": "double", "name": "ph", "required": true}, {"type": "double",
+    "name": "Hardness", "required": true}, {"type": "double", "name": "Solids", "required":
+    true}, {"type": "double", "name": "Chloramines", "required": true}, {"type": "double",
+    "name": "Sulfate", "required": true}, {"type": "double", "name": "Conductivity",
+    "required": true}, {"type": "double", "name": "Organic_carbon", "required": true},
+    {"type": "double", "name": "Trihalomethanes", "required": true}, {"type": "double",
+    "name": "Turbidity", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-04-08 09:44:55.764389'

@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/mlflow-dagshub/mlruns/342094196420431972/eef43b955e2e4b018362bdcf53c059da/artifacts
+end_time: 1744102858108
+entry_point_name: ''
+experiment_id: '342094196420431972'
+lifecycle_stage: active
+run_id: eef43b955e2e4b018362bdcf53c059da
+run_name: Combination1
+run_uuid: eef43b955e2e4b018362bdcf53c059da
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744102857930
+status: 4
+tags: []
+user_id: Lenovo

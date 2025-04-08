@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/mlflow-dagshub/mlruns/342094196420431972/a14fb78973a144ec8167922bf9d1f618/artifacts
+end_time: 1744102858178
+entry_point_name: ''
+experiment_id: '342094196420431972'
+lifecycle_stage: active
+run_id: a14fb78973a144ec8167922bf9d1f618
+run_name: Random forest Tunning
+run_uuid: a14fb78973a144ec8167922bf9d1f618
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744102634351
+status: 4
+tags: []
+user_id: Lenovo

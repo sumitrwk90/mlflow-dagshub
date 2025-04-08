@@ -1,0 +1,15 @@
+aliases: []
+creation_timestamp: 1744107500056
+current_stage: None
+description: ''
+last_updated_timestamp: 1744107500056
+name: water_potable_rscv
+run_id: af937302cb6c4b5db34756bb03899bd0
+run_link: ''
+source: models:/water_potable_rscv/1
+status: READY
+status_message: null
+storage_location: file:///D:/mlflow-dagshub/mlruns/342094196420431972/af937302cb6c4b5db34756bb03899bd0/artifacts/Best
+  model
+user_id: null
+version: 2

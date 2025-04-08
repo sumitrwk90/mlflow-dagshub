@@ -44,8 +44,14 @@ test_processed_data = fill_missing_with_median(test_data)
 
 from sklearn.ensemble import RandomForestClassifier
 import pickle
-X_train = train_processed_data.iloc[:,0:-1].values
-y_train = train_processed_data.iloc[:,-1].values
+
+# # Numpy array formate
+# X_train = train_processed_data.iloc[:,0:-1].values
+# y_train = train_processed_data.iloc[:,-1].values
+
+# Pandas DataFrame formate
+X_train = train_processed_data.drop(columns=['Potability'], axis=1)
+y_train = train_processed_data['Potability']
 
 # n_estimators: int=1000
 # learning_rate: float=0.001
@@ -64,8 +70,14 @@ param_dist ={
 
 random_search = RandomizedSearchCV(estimator = rf, param_distributions= param_dist, cv=5, verbose=2)
 
-with mlflow.start_run():
+with mlflow.start_run(ru_name = "Random forest Tunning") as parent_run:
+
     random_search.fit(X_train,y_train)
+
+    for i in range(len(random_search.cv_results_['params'])):
+        with mlflow.start_run(run_name=f"Combination{i+1}", nested=True) as child_run:
+            mlflow.log_params(random_search.cv_results_['params']['i'])
+            mlflow.log_metrics("mean_test_score", random_search.cv_results_['mean_test_score']['i'])
 
     # print best parameters
     print("Best parameters: ", random_search.best_params_)
@@ -80,8 +92,11 @@ with mlflow.start_run():
     # save 
     pickle.dump(random_search, open("model.pkl","wb"))
 
-    X_test = test_processed_data.iloc[:,0:-1].values
-    y_test = test_processed_data.iloc[:,-1].values
+    # X_test = test_processed_data.iloc[:,0:-1].values
+    # y_test = test_processed_data.iloc[:,-1].values
+
+    X_test = test_processed_data.drop(columns=['Potability'], axis=1)
+    y_test = test_processed_data['Potability']
 
     from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 
